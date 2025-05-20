@@ -18,7 +18,7 @@ export default function Navbar() {
           </div>
           <div>
             <hr className="w-[182px] h-[56px] bg-[#DADADA] rounded-xl mb-[-67px]" />
-            <button className="w-[182px] h-[60px] z-100 rounded-[14px] bg-gradient-to-r from-orange-500 to-pink-400 flex justify-center items-center font-semibold font-inter text-lg shadow-md">
+            <button className="w-[182px] h-[60px] z-100 rounded-[14px] bg-gradient-to-l from-primary to-secondary flex justify-center items-center font-semibold font-inter text-lg shadow-md">
               Get My Report
             </button>
           </div>

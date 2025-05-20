@@ -48,9 +48,9 @@ export default function Part() {
   ];
   return (
     <>
-      <div className="mt-9">
-        <div className="flex justify-evenly items-start gap-14">
-          <p className="max-w-[460px] text-[42px] font-bold leading-tight">
+      <div className="mt-9 ">
+        <div className="flex justify-between items-start gap-14 min-gap-10">
+          <p className="text-[42px] font-bold leading-tight">
             Decode the You Within
           </p>
           <p className="max-w-[670px] text-xl leading-[30px]">
@@ -60,7 +60,7 @@ export default function Part() {
             through science and micro-behavioral cues.
           </p>
         </div>
-        <div className="flex justify-between mt-8">
+        <div className="flex justify-between mt-14">
           <div>
             <ul className="space-y-4">
               {list.map((item, index) => (
@@ -76,7 +76,7 @@ export default function Part() {
             </ul>
           </div>
           <div>
-            <div className="w-[500px] h-[588px] relative bg-gray-100 rounded-lg overflow-hidden">
+            <div className="w-[500px] h-[562px] relative bg-gray-100 rounded-[41px] overflow-hidden">
               {activeImage && (
                 <Image
                   src={activeImage}
