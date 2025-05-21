@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -22,10 +23,10 @@ export default function Navbar() {
               Get My Report
             </button>
           </div>
-          <div className="flex justify items-center gap-[20px] rounded-xl border-[1px] border-[#A2A2A2] p-[14px]">
+          <Link href={"/signup"} className="flex justify items-center gap-[20px] rounded-xl border-[1px] border-[#A2A2A2] p-[14px]">
             <Image src="vector.svg" width={24} height={24} alt="/" />
             <Image src="vector-3.svg" width={24} height={24} alt="/" />
-          </div>
+          </Link>
         </div>
       </div>
     </nav>
