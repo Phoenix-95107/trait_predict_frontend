@@ -11,7 +11,7 @@ export default function Footer() {
           <p>Upload five selfies and get your free snapshot in 60seconds.</p>
         </div>
         <Link
-          href="step_1"
+          href="upload_image"
           className="px-[28px] py-[17px] bg-white rounded-[10px] text-lg font-semibold"
         >
           Get My Report

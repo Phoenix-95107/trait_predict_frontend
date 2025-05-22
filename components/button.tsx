@@ -19,7 +19,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <Link
-      href="/step_1"
+      href="/upload_image"
       type={type}
       onClick={onClick}
       className={`

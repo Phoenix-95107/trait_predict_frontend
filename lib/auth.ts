@@ -4,6 +4,6 @@ export const handleOAuthSignIn = (
   provider: "google" | "apple" | "facebook"
 ) => {
   signIn(provider, {
-    callbackUrl: "/step_1", // Change this to your desired redirect URL
+    callbackUrl: "/upload_image", // Change this to your desired redirect URL
   });
 };

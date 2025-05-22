@@ -29,7 +29,7 @@ export default function Payment() {
               <select
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="border cursor-pointer border-gray-300 rounded-md px-2 py-1 text-base font-semibold focus:outline-none focus:ring-2 focus:ring-primary w-16 text-center"
+                className="border border-gray-300 rounded-md px-2 py-1 text-base font-semibold focus:outline-none focus:ring-2 focus:ring-primary w-14 text-center"
                 onClick={(e) => e.stopPropagation()}
               >
                 {[1, 2, 3, 4, 5, 6, 7].map((n) => (
@@ -65,47 +65,42 @@ export default function Payment() {
                   </ul>
                 </div>
               </div>
-              <div className="flex flex-col items-start justify-center min-w-[80px] pr-12">
+              <div className="flex flex-col items-end min-w-[80px]">
                 <span className="text-2xl font-semibold">$26</span>
                 <span className="text-xs text-gray-500">One-Time</span>
               </div>
             </div>
           </div>
-          <div className="border-t pt-4 mt-2 flex pl-9 gap-2">
+          <div className="border-t pt-4 mt-2 flex flex-col pl-28 gap-2">
             <span className="text-base font-bold pl-1">Add ons:</span>
-            <div>
-              <div
-                className="flex items-center gap-2 pl-5"
-                onClick={() => setPartnerMatch((v) => !v)}
-              >
-                <input
-                  type="checkbox"
-                  checked={partnerMatch}
-                  className="accent-pink-500 w-5 h-5 hover:cursor-pointer"
-                  onChange={() => setPartnerMatch((v) => !v)}
-                />
-                <span className="text-sm">Partner Personality Match ($7)</span>
-              </div>
-              <div
-                className="flex items-center gap-2 pl-5 mt-3"
-                onClick={() => setVideoScan((v) => !v)}
-              >
-                <input
-                  type="checkbox"
-                  checked={videoScan}
-                  className="accent-pink-500 w-5 h-5 hover:cursor-pointer"
-                  onChange={() => setVideoScan((v) => !v)}
-                />
-                <span className="text-sm">
-                  Video Scan for 15%+ accuracy ($7)
-                </span>
-              </div>
+            <div
+              className="flex items-center gap-2 pl-5"
+              onChange={() => setPartnerMatch((v) => !v)}
+            >
+              <input
+                type="checkbox"
+                checked={partnerMatch}
+                onChange={() => setPartnerMatch((v) => !v)}
+                className="accent-pink-500 w-4 h-4"
+                onClick={(e) => e.stopPropagation()}
+              />
+              <span className="text-sm">Partner Personality Match ($7)</span>
+            </div>
+            <div className="flex items-center gap-2 pl-5">
+              <input
+                type="checkbox"
+                checked={videoScan}
+                onChange={() => setVideoScan((v) => !v)}
+                className="accent-pink-500 w-4 h-4"
+                onClick={(e) => e.stopPropagation()}
+              />
+              <span className="text-sm">Video Scan for 15%+ accuracy ($7)</span>
             </div>
           </div>
         </div>
         {/* Discovery Monthly Pass Card */}
         <div
-          className={`rounded-xl bg-white shadow p-6 flex items-start gap-4 border-2 transition-colors duration-200 ${
+          className={`rounded-xl bg-white shadow p-6 flex items-center gap-4 border-2 transition-colors duration-200 ${
             selected === "monthly" ? "border-pink-300" : "border-transparent"
           }`}
           onClick={() => setSelected("monthly")}
@@ -117,28 +112,26 @@ export default function Payment() {
             onChange={() => setSelected("monthly")}
             className="accent-pink-500 w-6 h-6"
           />
-          <div className="flex items-center justify-evenly w-full">
-            <div className="flex-1">
-              <span className="text-lg font-semibold">
-                Discovery Monthly Pass
-              </span>
-              <div className="text-sm text-gray-700 mt-1">
-                Partner Personality Match
-                <br />
-                Video Scan Upgrade
-                <br />
-                Up to 7 Full Insight Reports Monthly
-              </div>
+          <div className="flex-1">
+            <span className="text-lg font-semibold">
+              Discovery Monthly Pass
+            </span>
+            <div className="text-sm text-gray-700 mt-1">
+              Partner Personality Match
+              <br />
+              Video Scan Upgrade
+              <br />
+              Up to 7 Full Insight Reports Monthly
             </div>
-            <div className="flex flex-col items-start min-w-[80px]">
-              <span className="text-2xl font-semibold">
-                $17<span className="text-base font-normal">/month</span>
-              </span>
-              <span className="text-xs text-gray-500">Billed Annually</span>
-              <span className="text-xs text-orange-500 font-semibold">
-                75% off
-              </span>
-            </div>
+          </div>
+          <div className="flex flex-col items-end min-w-[80px]">
+            <span className="text-2xl font-semibold">
+              $17<span className="text-base font-normal">/month</span>
+            </span>
+            <span className="text-xs text-gray-500">Billed Annually</span>
+            <span className="text-xs text-orange-500 font-semibold">
+              75% off
+            </span>
           </div>
         </div>
         {/* Free Snapshot Card */}
@@ -155,18 +148,16 @@ export default function Payment() {
             onChange={() => setSelected("free")}
             className="accent-pink-500 w-6 h-6"
           />
-          <div className="flex items-center justify-evenly w-full">
-            <div className="flex-1">
-              <span className="text-lg font-semibold">Free Snapshot</span>
-              <div className="text-sm text-gray-700 mt-1">
-                1 badge & top-3 traits
-                <br />
-                60-sec result
-              </div>
+          <div className="flex-1">
+            <span className="text-lg font-semibold">Free Snapshot</span>
+            <div className="text-sm text-gray-700 mt-1">
+              1 badge & top-3 traits
+              <br />
+              60-sec result
             </div>
-            <div className="flex flex-col items-end min-w-[80px] pr-12">
-              <span className="text-2xl font-semibold">$0</span>
-            </div>
+          </div>
+          <div className="flex flex-col items-end min-w-[80px]">
+            <span className="text-2xl font-semibold">$0</span>
           </div>
         </div>
       </div>

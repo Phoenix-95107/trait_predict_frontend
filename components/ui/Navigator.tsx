@@ -8,7 +8,7 @@ export default function Navicator() {
 
   const getCurrentStep = () => {
     if (!pathname) return 1;
-    if (pathname.includes("step_1")) return 1;
+    if (pathname.includes("upload_image")) return 1;
     if (pathname.includes("payment")) return 2;
     if (pathname.includes("step_3")) return 3;
     return 1;
@@ -18,7 +18,7 @@ export default function Navicator() {
 
   const handleBack = () => {
     if (currentStep === 2) {
-      router.push("/step_1");
+      router.push("/upload_image");
     } else if (currentStep === 3) {
       router.push("/payment");
     } else {

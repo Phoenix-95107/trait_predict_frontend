@@ -70,7 +70,7 @@ export default function Famous() {
         <div className="mt-6">
           <hr className="w-[182px] h-[56px] bg-[#DADADA] rounded-xl mb-[-67px]" />
           <Link
-            href="/step_1"
+            href="/upload_image"
             className="w-[182px] h-[60px] z-100 rounded-[14px] bg-gradient-to-l from-primary to-secondary flex justify-center items-center font-semibold font-inter text-lg shadow-md"
           >
             Get My Report
