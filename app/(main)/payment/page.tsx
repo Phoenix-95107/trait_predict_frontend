@@ -5,113 +5,43 @@ export default function Payment() {
   const [selected, setSelected] = useState("full");
   const [partnerMatch, setPartnerMatch] = useState(false);
   const [videoScan, setVideoScan] = useState(false);
-
-  // Helper for gradient border
-  function CardWrapper({
-    selected,
-    children,
-  }: {
-    selected: boolean;
-    children: React.ReactNode;
-  }) {
-    return selected ? (
-      <div className="relative bg-gradient-to-l from-primary to-secondary p-[1px] rounded-xl">
-        <div className="bg-white rounded-xl w-full h-full">{children}</div>
-      </div>
-    ) : (
-      <div className="relative border border-transparent rounded-xl">
-        {children}
-      </div>
-    );
-  }
-
-  // Custom Gradient Checkbox
-  function GradientCheckbox({
-    checked,
-    onChange,
-    label,
-    id,
-  }: {
-    checked: boolean;
-    onChange: (v: boolean) => void;
-    label: string;
-    id: string;
-  }) {
-    return (
-      <label
-        className="relative flex items-center cursor-pointer select-none"
-        htmlFor={id}
-      >
-        <input
-          id={id}
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => onChange(e.target.checked)}
-          className="peer appearance-none w-5 h-5 rounded border-none outline-none focus:ring-0 focus:outline-none bg-white"
-          style={{ display: "none" }}
-        />
-        <span
-          className="w-5 h-5 rounded border bg-white flex items-center justify-center mr-2"
-          style={{
-            border: "1px solid",
-            borderImage:
-              "linear-gradient(135deg, var(--primary), var(--secondary)) 1",
-          }}
-        >
-          {checked && (
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              className="pointer-events-none"
-              fill="none"
-            >
-              <linearGradient
-                id={`check-gradient-${id}`}
-                x1="0"
-                y1="0"
-                x2="18"
-                y2="18"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="var(--primary)" />
-                <stop offset="1" stopColor="var(--secondary)" />
-              </linearGradient>
-              <path
-                d="M5 9.5L8 12.5L13 7.5"
-                stroke="url(#check-gradient-${id})"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          )}
-        </span>
-        <span className="text-sm">{label}</span>
-      </label>
-    );
-  }
+  const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="min-h-[900px] w-full flex justify-center items-start mt-12 bg-gray-100">
+    <div className="min-h-[900px] w-full flex justify-center items-start mt-10 bg-gray-100">
       <div className="w-[755px] flex flex-col gap-6">
         {/* Full Insight Reports Card */}
-        <CardWrapper selected={selected === "full"}>
-          <div
-            className="shadow-md p-6 flex flex-col gap-0 relative cursor-pointer rounded-xl"
-            onClick={() => setSelected("full")}
-          >
-            {/* Radio at top-left */}
-            <input
-              type="radio"
-              checked={selected === "full"}
-              onChange={() => setSelected("full")}
-              className="accent-[#FF77D7] w-6 h-6 absolute top-6 left-4 z-10"
-              style={{ accentColor: "#FF77D7" }}
-            />
-            <div className="flex items-center ml-12 gap-4">
+        <div
+          className={`rounded-xl bg-white shadow-md  p-6 flex flex-col gap-4 relative border-2 transition-colors duration-200 ${
+            selected === "full" ? "border-pink-300" : "border-transparent"
+          }`}
+          onClick={() => setSelected("full")}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="flex items-start gap-4">
+            <div className="flex items-center gap-5">
+              <input
+                type="radio"
+                checked={selected === "full"}
+                onChange={() => setSelected("full")}
+                className="accent-pink-500 w-6 h-6"
+              />
+              <select
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="border cursor-pointer border-gray-300 rounded-md px-2 py-1 text-base font-semibold focus:outline-none focus:ring-2 focus:ring-primary w-16 text-center"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-center justify-evenly w-full">
               <div className="flex-1">
-                <div className="flex items-center gap-2">
+                <div className="flex items-start gap-2">
                   <span className="text-xl font-bold">
                     Full Insight Reports
                   </span>
@@ -119,7 +49,7 @@ export default function Payment() {
                     Recommended
                   </span>
                 </div>
-                <div className="grid grid-cols-2 gap-x-8 mt-2 text-sm text-gray-700">
+                <div className="grid grid-cols-2 gap-x-8 mt-2 text-sm text-gray-700 pl-5">
                   <ul className="list-disc list-inside space-y-1">
                     <li>Detailed Scientific Proof</li>
                     <li>Strengths & Growth Areas</li>
@@ -134,48 +64,61 @@ export default function Payment() {
                     <li>Famous Matches Reveal</li>
                   </ul>
                 </div>
-                {/* Divider */}
-                <div className="border-t border-gray-200 my-4" />
-                {/* Add-ons row */}
-                <div className="flex items-center gap-6">
-                  <span className="text-sm font-medium whitespace-nowrap">
-                    Add ons:
-                  </span>
-                  <GradientCheckbox
-                    checked={partnerMatch}
-                    onChange={(v) => setPartnerMatch(v)}
-                    label="Partner Personality Match ($7)"
-                    id="partner-match"
-                  />
-                  <GradientCheckbox
-                    checked={videoScan}
-                    onChange={(v) => setVideoScan(v)}
-                    label="Video Scan for 15%+ accuracy ($7)"
-                    id="video-scan"
-                  />
-                </div>
               </div>
-              <div className="flex flex-col items-end min-w-[80px]">
+              <div className="flex flex-col items-start justify-center min-w-[80px] pr-12">
                 <span className="text-2xl font-semibold">$26</span>
                 <span className="text-xs text-gray-500">One-Time</span>
               </div>
             </div>
           </div>
-        </CardWrapper>
+          <div className="border-t pt-4 mt-2 flex pl-9 gap-2">
+            <span className="text-base font-bold pl-1">Add ons:</span>
+            <div>
+              <div
+                className="flex items-center gap-2 pl-5"
+                onClick={() => setPartnerMatch((v) => !v)}
+              >
+                <input
+                  type="checkbox"
+                  checked={partnerMatch}
+                  className="accent-pink-500 w-5 h-5 hover:cursor-pointer"
+                  onChange={() => setPartnerMatch((v) => !v)}
+                />
+                <span className="text-sm">Partner Personality Match ($7)</span>
+              </div>
+              <div
+                className="flex items-center gap-2 pl-5 mt-3"
+                onClick={() => setVideoScan((v) => !v)}
+              >
+                <input
+                  type="checkbox"
+                  checked={videoScan}
+                  className="accent-pink-500 w-5 h-5 hover:cursor-pointer"
+                  onChange={() => setVideoScan((v) => !v)}
+                />
+                <span className="text-sm">
+                  Video Scan for 15%+ accuracy ($7)
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Discovery Monthly Pass Card */}
-        <CardWrapper selected={selected === "monthly"}>
-          <div
-            className="shadow p-6 flex items-center gap-4 relative cursor-pointer rounded-xl"
-            onClick={() => setSelected("monthly")}
-          >
-            <input
-              type="radio"
-              checked={selected === "monthly"}
-              onChange={() => setSelected("monthly")}
-              className="accent-[#FF77D7] w-6 h-6 absolute top-6 left-4 z-10"
-              style={{ accentColor: "#FF77D7" }}
-            />
-            <div className="flex-1 ml-12">
+        <div
+          className={`rounded-xl bg-white shadow p-6 flex items-start gap-4 border-2 transition-colors duration-200 ${
+            selected === "monthly" ? "border-pink-300" : "border-transparent"
+          }`}
+          onClick={() => setSelected("monthly")}
+          style={{ cursor: "pointer" }}
+        >
+          <input
+            type="radio"
+            checked={selected === "monthly"}
+            onChange={() => setSelected("monthly")}
+            className="accent-pink-500 w-6 h-6"
+          />
+          <div className="flex items-center justify-evenly w-full">
+            <div className="flex-1">
               <span className="text-lg font-semibold">
                 Discovery Monthly Pass
               </span>
@@ -187,7 +130,7 @@ export default function Payment() {
                 Up to 7 Full Insight Reports Monthly
               </div>
             </div>
-            <div className="flex flex-col items-end min-w-[80px]">
+            <div className="flex flex-col items-start min-w-[80px]">
               <span className="text-2xl font-semibold">
                 $17<span className="text-base font-normal">/month</span>
               </span>
@@ -197,21 +140,23 @@ export default function Payment() {
               </span>
             </div>
           </div>
-        </CardWrapper>
+        </div>
         {/* Free Snapshot Card */}
-        <CardWrapper selected={selected === "free"}>
-          <div
-            className="shadow p-6 flex items-center gap-4 relative cursor-pointer rounded-xl"
-            onClick={() => setSelected("free")}
-          >
-            <input
-              type="radio"
-              checked={selected === "free"}
-              onChange={() => setSelected("free")}
-              className="accent-[#FF77D7] w-6 h-6 absolute top-6 left-4 z-10"
-              style={{ accentColor: "#FF77D7" }}
-            />
-            <div className="flex-1 ml-12">
+        <div
+          className={`rounded-xl bg-white shadow p-6 flex items-center gap-4 border-2 transition-colors duration-200 ${
+            selected === "free" ? "border-pink-300" : "border-transparent"
+          }`}
+          onClick={() => setSelected("free")}
+          style={{ cursor: "pointer" }}
+        >
+          <input
+            type="radio"
+            checked={selected === "free"}
+            onChange={() => setSelected("free")}
+            className="accent-pink-500 w-6 h-6"
+          />
+          <div className="flex items-center justify-evenly w-full">
+            <div className="flex-1">
               <span className="text-lg font-semibold">Free Snapshot</span>
               <div className="text-sm text-gray-700 mt-1">
                 1 badge & top-3 traits
@@ -219,11 +164,11 @@ export default function Payment() {
                 60-sec result
               </div>
             </div>
-            <div className="flex flex-col items-end min-w-[80px]">
+            <div className="flex flex-col items-end min-w-[80px] pr-12">
               <span className="text-2xl font-semibold">$0</span>
             </div>
           </div>
-        </CardWrapper>
+        </div>
       </div>
     </div>
   );
