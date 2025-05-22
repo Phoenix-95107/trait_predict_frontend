@@ -10,9 +10,12 @@ export default function Footer() {
           </p>
           <p>Upload five selfies and get your free snapshot in 60seconds.</p>
         </div>
-        <button className="px-[28px] py-[17px] bg-white rounded-[10px] text-lg font-semibold">
+        <Link
+          href="step_1"
+          className="px-[28px] py-[17px] bg-white rounded-[10px] text-lg font-semibold"
+        >
           Get My Report
-        </button>
+        </Link>
       </div>
       <div className="flex mt-14 gap-[83px]">
         <div>

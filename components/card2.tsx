@@ -76,11 +76,10 @@ export default function FlowCard({
               <Image
                 src="/arrow-right-4.svg"
                 alt="arrow"
-                width={24}
-                height={24}
+                width={14}
+                height={14}
               />
             </div>
-
           </div>
         </div>
       </div>

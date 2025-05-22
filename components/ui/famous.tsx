@@ -1,5 +1,6 @@
 import FlowAnimation from "@/components/flowanimation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Famous() {
   const image = [
@@ -68,9 +69,12 @@ export default function Famous() {
         <p>Get your own personality decoded in 60 Seconds.</p>
         <div className="mt-6">
           <hr className="w-[182px] h-[56px] bg-[#DADADA] rounded-xl mb-[-67px]" />
-          <button className="w-[182px] h-[60px] z-100 rounded-[14px] bg-gradient-to-l from-primary to-secondary flex justify-center items-center font-semibold font-inter text-lg shadow-md">
+          <Link
+            href="/step_1"
+            className="w-[182px] h-[60px] z-100 rounded-[14px] bg-gradient-to-l from-primary to-secondary flex justify-center items-center font-semibold font-inter text-lg shadow-md"
+          >
             Get My Report
-          </button>
+          </Link>
         </div>
       </div>
     </>

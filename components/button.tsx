@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ButtonProps {
   children: ReactNode;
@@ -17,7 +18,8 @@ export default function Button({
   type = "button",
 }: ButtonProps) {
   return (
-    <button
+    <Link
+      href="/step_1"
       type={type}
       onClick={onClick}
       className={`
@@ -45,6 +47,6 @@ export default function Button({
           className="-mr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         />
       </span>
-    </button>
+    </Link>
   );
 }

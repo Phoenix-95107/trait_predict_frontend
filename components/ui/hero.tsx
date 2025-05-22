@@ -1,5 +1,5 @@
-import ImageCarousel from "../ImageCarousel";
-import Button from "../button";
+import ImageCarousel from "@/components/ImageCarousel";
+import Button from "@/components/button";
 
 export default function Hero() {
   const carouseImage = [

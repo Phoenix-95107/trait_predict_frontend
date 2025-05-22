@@ -9,7 +9,7 @@ export default function SignUpPage() {
   return (
     <>
       <Link
-        href="#"
+        href="/"
         className="absolute top-[38px] left-[38px] rounded-full flex justify-center items-center h-8 w-8 bg-[#B8B8B8]"
       >
         <svg

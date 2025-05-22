@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import FlowCard from "./card2"; // Make sure the import path is correct
+import FlowCard from "@/components/card2"; // Make sure the import path is correct
 
 interface FlowItem {
   personality: string;
